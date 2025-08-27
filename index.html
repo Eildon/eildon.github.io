@@ -118,6 +118,45 @@
             text-decoration: underline;
         }
 
+        .slack-logo-container {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 8px;
+            padding: 6px 10px;
+            background: linear-gradient(135deg, #4a154b 0%, #611f69 100%);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(97, 31, 105, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slack-logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .slack-logo-container:hover::before {
+            left: 100%;
+        }
+
+        .slack-logo-container:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(97, 31, 105, 0.3);
+        }
+
+        .slack-logo {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 60px 40px 40px 40px;
@@ -139,6 +178,16 @@
             
             .content {
                 font-size: 16px;
+            }
+            
+            .slack-logo-container {
+                margin-left: 6px;
+                padding: 4px 8px;
+            }
+
+            .slack-logo {
+                width: 18px;
+                height: 18px;
             }
         }
     </style>
@@ -170,12 +219,27 @@
         
             
             <div class="paragraph">
-                <span class="emphasis">Automated technical content marketing for busy founders.</span>
+                <span class="emphasis">Automated technical content marketing for busy founders</span> via Slack
+                <span class="slack-logo-container">
+                    <svg class="slack-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-label="Slack logo">
+                        <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#E01E5A"/>
+                        <path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0"/>
+                        <path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D"/>
+                        <path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E"/>
+                    </svg>
+                </span>.
             </div>
             <div class="button-container">
                 <a href="#" class="button">Reach Out</a>
-                <a href="#" class="button receive-updates">Receive Updates</a>
+                <a href="https://x.com/eildon_xyz" target="_blank" rel="noopener" aria-label="Follow on X"
+                   style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid #e1e8ed; color: #000; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 1px 4px rgba(0,0,0,0.03); transition: background 0.15s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:block;">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+                    </svg>
+                    <span style="font-size: 15px;">Follow on X</span>
+                </a>
             </div>
+             
         </div>
     </div>
     <div class="footer">
