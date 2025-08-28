@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eildon</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -106,7 +108,7 @@
             padding: 20px;
             font-size: 14px;
             color: #6b7280;
-            margin-top: 130px;
+            margin-top: 50px;
         }
 
         a {
@@ -190,9 +192,48 @@
                 height: 18px;
             }
         }
+        /* Disable text selection */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Allow text selection for specific elements if needed */
+        .selectable {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        /* Hide developer tools detection warning */
+        .dev-tools-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            color: #fff;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-size: 24px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+    <!-- Developer tools detection warning -->
+    <div class="dev-tools-warning" id="devToolsWarning">
+        <div>
+            <h2>⚠️ Developer Tools Detected</h2>
+            <p>Please close developer tools to continue browsing.</p>
+        </div>
+    </div>
     <div class="container">
         <div class="header">
             <div class="greeting">Dear protocol founder,</div>
@@ -238,7 +279,11 @@
                     <span style="font-size: 15px;">Follow on X</span>
                 </a>
             </div>
-             
+            <div style="text-align: center; margin-top: 50px;">
+                <span style="font-family: 'Cormorant Garamond', 'Crimson Text', 'Libre Baskerville', 'Times New Roman', serif; font-size: 2.5rem; font-style: italic;">
+                    eildon
+                </span>
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -247,5 +292,155 @@
         <br>
         Made with ❤️ from Melbourne, Australia 
     </div>
+
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable common keyboard shortcuts for developer tools and view source
+        document.addEventListener('keydown', function(e) {
+            // Disable F12 (Developer Tools)
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+Shift+I (Developer Tools)
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+Shift+C (Element Inspector)
+            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+U (View Source)
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+S (Save Page)
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+A (Select All)
+            if (e.ctrlKey && e.key === 'a') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Ctrl+P (Print)
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Developer tools detection
+        let devtools = {
+            open: false,
+            orientation: null
+        };
+        
+        const threshold = 160;
+        let widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        let heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        
+        setInterval(function() {
+            if (widthThreshold || heightThreshold) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    document.getElementById('devToolsWarning').style.display = 'flex';
+                    console.clear();
+                    console.log('%cStop!', 'color: red; font-size: 50px; font-weight: bold;');
+                    console.log('%cThis is a browser feature intended for developers. Please close the developer tools.', 'color: red; font-size: 16px;');
+                }
+            } else {
+                if (devtools.open) {
+                    devtools.open = false;
+                    document.getElementById('devToolsWarning').style.display = 'none';
+                }
+            }
+            
+            widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        }, 500);
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable image drag
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Clear console periodically
+        setInterval(function() {
+            console.clear();
+        }, 1000);
+
+        // Disable certain developer tools shortcuts on Mac
+        document.addEventListener('keydown', function(e) {
+            // Disable Cmd+Option+I (Mac Developer Tools)
+            if (e.metaKey && e.altKey && e.key === 'i') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Cmd+Option+J (Mac Console)
+            if (e.metaKey && e.altKey && e.key === 'j') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Cmd+Option+C (Mac Element Inspector)
+            if (e.metaKey && e.altKey && e.key === 'c') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Disable Cmd+U (Mac View Source)
+            if (e.metaKey && e.key === 'u') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Obfuscation: Hide real content and show decoy
+        document.addEventListener('DOMContentLoaded', function() {
+            // Basic protection against automated scraping
+            if (navigator.webdriver) {
+                document.body.innerHTML = '<div style="text-align: center; padding: 50px;">Access denied</div>';
+                return;
+            }
+        });
+
+        // Disable print screen (limited effectiveness)
+        document.addEventListener('keyup', function(e) {
+            if (e.key === 'PrintScreen') {
+                navigator.clipboard.writeText('');
+                alert('Screenshots are disabled on this site.');
+            }
+        });
+    </script>
 </body>
 </html>
