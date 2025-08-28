@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eildon</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo_cropped.png">
+    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap');
 
@@ -15,7 +18,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #fff;
             min-height: 100vh;
             padding: 120px 80px 80px 80px;
         }
@@ -49,7 +52,7 @@
 
         .content {
             line-height: 1.8;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .paragraph {
@@ -208,32 +211,11 @@
             user-select: text;
         }
 
-        /* Hide developer tools detection warning */
-        .dev-tools-warning {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            color: #fff;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            font-size: 24px;
-            text-align: center;
-        }
+
     </style>
 </head>
 <body>
-    <!-- Developer tools detection warning -->
-    <div class="dev-tools-warning" id="devToolsWarning">
-        <div>
-            <h2>⚠️ Developer Tools Detected</h2>
-            <p>Please close developer tools to continue browsing.</p>
-        </div>
-    </div>
+
     <div class="container">
         <div class="header">
             <div class="greeting">Dear protocol founder,</div>
@@ -269,7 +251,7 @@
                     </svg>
                 </span>.
             </div>
-            <div class="button-container">
+            <div class="button-container" style="margin-top: 32px; text-align: center;">
                 <a href="#" class="button">Reach Out</a>
                 <a href="https://x.com/eildon_xyz" target="_blank" rel="noopener" aria-label="Follow on X"
                    style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid #e1e8ed; color: #000; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 1px 4px rgba(0,0,0,0.03); transition: background 0.15s;">
@@ -279,18 +261,15 @@
                     <span style="font-size: 15px;">Follow on X</span>
                 </a>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
-                <span style="font-family: 'Cormorant Garamond', 'Crimson Text', 'Libre Baskerville', 'Times New Roman', serif; font-size: 2.5rem; font-style: italic;">
-                    eildon
-                </span>
+            <div style="text-align: center; margin-top: 60px; margin-bottom: -70px;">
+                <img src="logo_cropped.png" alt="eildon logo" style="height: 170px;">
             </div>
-        </div>
     </div>
     <div class="footer">
         
         Founded by <a href="https://x.com/bithiahkoshy">Bithiah</a>, a web3 technical writer by profession
         <br>
-        Made with ❤️ from Melbourne, Australia 
+        Based in Melbourne (Naarm), Australia
     </div>
 
     <script>
@@ -351,35 +330,7 @@
             }
         });
 
-        // Developer tools detection
-        let devtools = {
-            open: false,
-            orientation: null
-        };
-        
-        const threshold = 160;
-        let widthThreshold = window.outerWidth - window.innerWidth > threshold;
-        let heightThreshold = window.outerHeight - window.innerHeight > threshold;
-        
-        setInterval(function() {
-            if (widthThreshold || heightThreshold) {
-                if (!devtools.open) {
-                    devtools.open = true;
-                    document.getElementById('devToolsWarning').style.display = 'flex';
-                    console.clear();
-                    console.log('%cStop!', 'color: red; font-size: 50px; font-weight: bold;');
-                    console.log('%cThis is a browser feature intended for developers. Please close the developer tools.', 'color: red; font-size: 16px;');
-                }
-            } else {
-                if (devtools.open) {
-                    devtools.open = false;
-                    document.getElementById('devToolsWarning').style.display = 'none';
-                }
-            }
-            
-            widthThreshold = window.outerWidth - window.innerWidth > threshold;
-            heightThreshold = window.outerHeight - window.innerHeight > threshold;
-        }, 500);
+
 
         // Disable drag and drop
         document.addEventListener('dragstart', function(e) {
