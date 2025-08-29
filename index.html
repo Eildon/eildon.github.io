@@ -212,6 +212,119 @@
             user-select: text;
         }
 
+        /* Tally Modal Styles */
+        .tally-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tally-modal.show {
+            opacity: 1;
+        }
+
+        .tally-modal-content {
+            background-color: #fff;
+            margin: 3% auto;
+            padding: 0;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: translateY(-30px);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tally-modal.show .tally-modal-content {
+            transform: translateY(0);
+        }
+
+        .tally-modal-header {
+            padding: 20px 20px 0 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tally-close {
+            color: #999;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            line-height: 1;
+            padding: 5px;
+            margin: -5px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tally-close:hover {
+            color: #666;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .tally-form-container {
+            flex: 1;
+            padding: 0 20px 20px 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tally-form-container iframe {
+            border-radius: 8px;
+            flex: 1;
+            min-height: 500px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .tally-modal-content {
+                width: 95%;
+                margin: 5% auto;
+                max-height: 85vh;
+            }
+            
+            .tally-modal-header {
+                padding: 15px 15px 0 15px;
+            }
+            
+            .tally-form-container {
+                padding: 0 15px 15px 15px;
+            }
+            
+            .tally-close {
+                font-size: 24px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .tally-form-container iframe {
+                min-height: 450px;
+            }
+        }
+
 
     </style>
 </head>
@@ -252,7 +365,7 @@
                 </span>.
             </div>
             <div class="button-container" style="margin-top: 32px; text-align: center;">
-                <a href="#" class="button">Reach Out</a>
+                <button id="reachOutBtn" class="button">Reach Out</button>
                 <a href="https://x.com/eildon_xyz" target="_blank" rel="noopener" aria-label="Follow on X"
                    style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid #e1e8ed; color: #000; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 1px 4px rgba(0,0,0,0.03); transition: background 0.15s;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:block;">
@@ -273,7 +386,80 @@
         Based in Melbourne (Naarm), Australia
     </div>
 
+    <!-- Tally Form Modal -->
+    <div id="tallyModal" class="tally-modal">
+        <div class="tally-modal-content">
+            <div class="tally-modal-header">
+                <span class="tally-close">&times;</span>
+            </div>
+            <div class="tally-form-container">
+                <iframe 
+                    id="tallyIframe"
+                    src="https://tally.so/embed/w4Mv6b?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    title="Eildon Waiting List">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Tally Modal functionality
+        const tallyModal = document.getElementById('tallyModal');
+        const reachOutBtn = document.getElementById('reachOutBtn');
+        const tallyClose = document.querySelector('.tally-close');
+
+        // Open Tally modal
+        reachOutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            tallyModal.style.display = 'block';
+            setTimeout(() => {
+                tallyModal.classList.add('show');
+            }, 10);
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close Tally modal
+        function closeTallyModal() {
+            tallyModal.classList.remove('show');
+            setTimeout(() => {
+                tallyModal.style.display = 'none';
+                // Re-enable body scroll
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        tallyClose.addEventListener('click', closeTallyModal);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === tallyModal) {
+                closeTallyModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && tallyModal.classList.contains('show')) {
+                closeTallyModal();
+            }
+        });
+
+        // Listen for Tally form submission (optional)
+        window.addEventListener('message', function(e) {
+            if (e.data && e.data.type === 'TALLY_FORM_SUBMIT') {
+                // Form was submitted - you can add celebration here if desired
+                setTimeout(() => {
+                    closeTallyModal();
+                }, 1000);
+            }
+        });
+
         // Disable right-click context menu
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
