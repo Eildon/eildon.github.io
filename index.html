@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="copyright" content="Eildon. All rights reserved.">
   <title>Imagination is Limit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,5 +34,47 @@
     </section>
     
   </main>
+  <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Disable common keyboard shortcuts for viewing source
+    document.addEventListener('keydown', function(e) {
+      // Disable F12 (Developer Tools)
+      if (e.key === 'F12') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+Shift+I (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+Shift+J (Console)
+      if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+U (View Source)
+      if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+S (Save Page)
+      if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Disable text selection (optional - can be removed if you want selectable text)
+    // document.addEventListener('selectstart', function(e) {
+    //   e.preventDefault();
+    //   return false;
+    // });
+  </script>
 </body>
 </html>
