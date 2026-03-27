@@ -1,81 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="copyright" content="Eildon. All rights reserved.">
-  <title>eildon.xyz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="M7jjDzpp_400x400.png?v=2">
-  <link rel="shortcut icon" type="image/png" href="M7jjDzpp_400x400.png?v=2">
-  <link rel="apple-touch-icon" href="M7jjDzpp_400x400.png">
-  <link rel="icon" type="image/png" sizes="400x400" href="M7jjDzpp_400x400.png?v=2">
+<title>Eildon.xyz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+
+<style>
+body {
+  margin: 0;
+  font-family: ms gothic;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* Centers the container */
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Space between image and text */
+}
+
+.text {
+  text-align: left; /* Left-aligns text inside */
+}
+
+img {
+  max-width: 400px; /* Adjust as needed */
+  height: auto;
+  margin-left: 120px; /* Moves image slightly to the right */
+}
+</style>
 </head>
 <body>
-  <nav class="nav">
-  </nav>
-  <main>
-    <div class="gradient-background"></div>
-    <div class="overlay"></div>
-    <section class="content">
-      <h1>changing the way we write and do founder-led content marketing.</h1>
-      <img src="logo_cropped.svg" alt="Eildon logo" class="logo">
-      <p class="subtitle">fully AI-driven, boosting founder productivity</p>
-      <div class="cta-row">
 
-          <span>Follow on</span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M18.146 2h3.07l-6.71 7.675L22 22h-6.146l-4.8-6.84L5.6 22H2.53l7.2-8.235L2 2h6.27l4.33 6.05L18.146 2Zm-1.076 18h1.7L7.01 4h-1.7l11.76 16Z"/>
-          </svg>
-        </a>
-      </div>
-    </section>
+<div class="container">
+  <div class="content">
+    <div class="text">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <p>Farmers in Australia and around the world face a deeply rooted supply chain crisis.</p>
+      <p>Commercial operators are shutting down as farming becomes unprofitable
+      <br>due to rising input costs, losing money just to stay in business.</p>
+
+      <p>The truth is we do not need to buy as much fertilizer, crop protection and seed 
+        <br>as we think we do. Sure, we need to optimize for yield, but is that little increase
+        <br> in yield actually worth the cost?</p>
+      <p>Industrial products will only ever go up in price, with agrochemical companies 
+        <br>profiting millions and the farmer becoming poorer from last season.</p>
+ 
+      <p>Analyze and understand ways you can do cost reduction for your farming operation <br>
+        when it comes to input costs.</p>
+
+      <p>We need <i>margin optimization</i>, not <i>yield optimization</i>.</p>
+    </div>
     
-  </main>
-  <script>
-    // Disable right-click context menu
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      return false;
-    });
-    
-    // Disable common keyboard shortcuts for viewing source
-    document.addEventListener('keydown', function(e) {
-      // Disable F12 (Developer Tools)
-      if (e.key === 'F12') {
-        e.preventDefault();
-        return false;
-      }
-      // Disable Ctrl+Shift+I (Developer Tools)
-      if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-        e.preventDefault();
-        return false;
-      }
-      // Disable Ctrl+Shift+J (Console)
-      if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-        e.preventDefault();
-        return false;
-      }
-      // Disable Ctrl+U (View Source)
-      if (e.ctrlKey && e.key === 'u') {
-        e.preventDefault();
-        return false;
-      }
-      // Disable Ctrl+S (Save Page)
-      if (e.ctrlKey && e.key === 's') {
-        e.preventDefault();
-        return false;
-      }
-    });
-    
-    // Disable text selection (optional - can be removed if you want selectable text)
-    // document.addEventListener('selectstart', function(e) {
-    //   e.preventDefault();
-    //   return false;
-    // });
-  </script>
+  </div>
+</div>
+
 </body>
 </html>
