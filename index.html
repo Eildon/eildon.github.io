@@ -1,73 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Eildon.xyz</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eildon</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: ms gothic;
-  font-size: 20px;
-  letter-spacing: 1px;
-}
+  <link rel="icon" type="image/png" href="favicon-new.png">
+  <link rel="shortcut icon" href="favicon.ico">
 
-.container {
-  display: flex;
-  justify-content: center; /* Centers the container */
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
-.content {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px; /* Space between image and text */
-}
-
-.text {
-  text-align: left; /* Left-aligns text inside */
-}
-
-img {
-  max-width: 400px; /* Adjust as needed */
-  height: auto;
-  margin-left: 120px; /* Moves image slightly to the right */
-}
-</style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="container">
-  <div class="content">
-    <div class="text">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <p>Farmers in Australia and around the world face a deeply rooted supply chain crisis.</p>
-      <p>Commercial operators are shutting down as farming becomes unprofitable
-      <br>due to rising input costs, losing money just to stay in business.</p>
-
-      <p>The truth is we do not need to buy as much fertilizer, crop protection and seed 
-        <br>as we think we do. Sure, we need to optimize for yield, but is that little increase
-        <br> in yield actually worth the cost?</p>
-      <p>Industrial products will only ever go up in price, with agrochemical companies 
-        <br>profiting millions and the farmer becoming poorer from last season.</p>
- 
-      <p>Analyze and understand ways you can do cost reduction for your farming operation <br>
-        when it comes to input costs.</p>
-
-      <p>We need <i>margin optimization</i>, not <i>yield optimization</i>.</p>
-    </div>
-    
+  <!-- Hero image -->
+  <div class="hero">
+    <img class="hero-img" src="banner_site.png" alt="">
+    <div class="hero-fade-top"></div>
+    <div class="hero-fade-bottom"></div>
   </div>
-</div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-logo">
+        <img src="logo_cropped.svg" alt="Eildon" class="header-logo-img">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="inner">
+      <div class="two-col">
+
+        <!-- Left -->
+        <section class="intro">
+          <p class="reveal">Eildon is a crypto-rails payment corridor.</p>
+          <p class="reveal">USD access in Tonga is extremely limited. Fees eat up most of the transaction value. We're working to change that with stablecoins.</p>
+          <p class="reveal">Tongan importers send TOP, we handle the conversion, and your supplier receives USD or any currency directly to their bank.</p>
+        </section>
+
+        <!-- Right -->
+        <aside class="tagline reveal">
+          <p>Frictionless capital for Pacific trade.</p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <p class="footer-eoe">WIP. Currently being built with love ❤️ by <a href="https://bithiah.koshy.au/" target="_blank" rel="noopener">Bithiah</a>.</p>
+      <div class="footer-links">
+        <a href="mailto:hello@eildon.xyz">hello@eildon.xyz</a>
+        <a href="https://x.com/eildonxyz" target="_blank" rel="noopener">X / Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey  && e.key === 'u') ||
+        (e.ctrlKey  && e.key === 's') ||
+        (e.metaKey  && e.key === 'u') ||
+        (e.metaKey  && e.key === 's') ||
+        (e.ctrlKey  && e.shiftKey && ['i','I','j','J','c','C'].includes(e.key)) ||
+        (e.metaKey  && e.altKey   && ['i','I','j','J','c','C'].includes(e.key))
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.12) + 's';
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
